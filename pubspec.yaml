@@ -1,46 +1,45 @@
 name: boiler_app
 description: Boiler monitoring dashboard for Kechez IoT platform.
 publish_to: 'none'
-version: 1.0.0+1
 
+version: 1.0.0+2
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^1.0.6
   shared_preferences: ^2.2.2
+
+  # Firebase
   firebase_core: ^4.15.0
   firebase_auth: ^6.7.0
   firebase_database: ^12.6.0
-  # Firebase packages are added with `flutter pub add` (see README step 4a)
-  # so you get the latest versions compatible with your Flutter SDK:
-  #   firebase_core, firebase_auth, firebase_database
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^3.0.0
   flutter_native_splash: ^2.4.1
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
 
-# Config for the `flutter_native_splash` package — generates the actual
-# native Android/iOS launch screens (the ones shown before Flutter even
-# starts, which is where the default Flutter logo comes from). This
-# section does nothing by itself; see README.md step 6 to run it.
-#
-# No `image:` here on purpose — Android 12+'s own splash-screen system
-# forcibly masks any icon into a rounded-square "squircle" container,
-# which chops up a circular icon like ours. Rather than fight that
-# platform constraint, this native splash is just a solid color that
-# exactly matches the animated splash's background (see
-# lib/screens/splash_screen.dart), so the moment Flutter takes over and
-# starts drawing the real icon, it feels like one continuous screen
-# rather than an icon-to-icon jump cut.
+# Native splash screen configuration
 flutter_native_splash:
   color: "#0D0D0F"
+
   android_12:
     color: "#0D0D0F"
+
+# Android and iOS app icon configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  image_path: "assets/icon/app_icon.png"
+  remove_alpha_ios: true
